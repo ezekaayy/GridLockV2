@@ -70,7 +70,7 @@ app.use(
 // other middleware
 app.use(express.json({ limit: "10kb" }));
 
-app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+// app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 // Routes
 app.use("/api", routes);

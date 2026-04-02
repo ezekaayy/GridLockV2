@@ -9,7 +9,7 @@ import {
   getRelatedProductsController,
 } from "../controllers/productController";
 import { verifyToken } from "../utils/middlewares";
-import { uploadProductFiles } from "../utils/upload";
+import { uploadProductFiles } from "../utils/cloudinary";
 
 const ProductRouter: Router = Router();
 

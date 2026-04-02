@@ -151,11 +151,13 @@ export const addProduct = async (req: Request, res: Response) => {
     const uploadedFiles = req.files as { [fieldname: string]: Express.Multer.File[] };
     console.log("Uploaded files:", uploadedFiles);
     if (uploadedFiles.coverImage && uploadedFiles.coverImage[0]) {
-      coverImage = `/uploads/covers/${uploadedFiles.coverImage[0].filename}`;
+      // coverImage = `/uploads/covers/${uploadedFiles.coverImage[0].filename}`;
+      coverImage = uploadedFiles.coverImage[0].path; //cloudinary URL
       console.log("Cover image path saved:", coverImage);
     }
     if (uploadedFiles.files && uploadedFiles.files.length > 0) {
-      files = uploadedFiles.files.map((f) => `/uploads/files/${f.filename}`);
+      // files = uploadedFiles.files.map((f) => `/uploads/files/${f.filename}`);
+      files = uploadedFiles.files.map((f) => f.path)
       console.log("Product files paths saved:", files);
     }
   } else {
@@ -208,10 +210,12 @@ export const updateProduct = async (req: Request, res: Response) => {
   if (req.files) {
     const uploadedFiles = req.files as { [fieldname: string]: Express.Multer.File[] };
     if (uploadedFiles.coverImage && uploadedFiles.coverImage[0]) {
-      coverImage = `/uploads/covers/${uploadedFiles.coverImage[0].filename}`;
+      // coverImage = `/uploads/covers/${uploadedFiles.coverImage[0].filename}`;
+      coverImage = uploadedFiles.coverImage[0].path;
     }
     if (uploadedFiles.files && uploadedFiles.files.length > 0) {
-      files = [...files, ...uploadedFiles.files.map((f) => `/uploads/files/${f.filename}`)];
+      // files = [...files, ...uploadedFiles.files.map((f) => `/uploads/files/${f.filename}`)];
+      files = [...files, ...uploadedFiles.files.map((f) => f.path)];
     }
   }
 
