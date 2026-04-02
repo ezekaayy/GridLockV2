@@ -1,0 +1,1099 @@
+--- Page 1 ---
+ 
+ 
+ 
+ 
+Tribhuvan University 
+Faculty of Humanities and Social Sciences 
+ 
+  
+ BUS TICKETING SYSTEM 
+ 
+A PROJECT REPORT 
+ 
+ 
+ 
+Submitted To 
+Department of Bachelor in Computer Application 
+  Mechi Multiple Campus 
+ 
+ 
+In partial fulfilment of the requirements for the Bachelors in Computer Application 
+ 
+ 
+Submitted By 
+Aditya Uprety(202038) 
+Rupan Chapagain (202122) 
+6th Kartik 2081 
+ 
+ 
+Under the Supervision of 
+Krishna pd. Acharya 
+
+--- Page 2 ---
+ 
+ 
+ii 
+ 
+ 
+ 
+ 
+ 
+Tribhuvan University 
+Faculty of Humanities and Social Sciences 
+Mechi Multiple Campus 
+ 
+ 
+Supervisor’s Recommendation 
+ 
+I hereby recommend that this project prepared under my supervision by  ADITYA 
+UPRETY & RUPAN CHAPAGAIN entitled “BUS TICKETING SYSTEM” in partial 
+fulfilment of the requirements for the degree of Bachelor of Computer Application is 
+recommended for the final evaluation. 
+ 
+ 
+ 
+ 
+…………………………… 
+SIGNATURE 
+Krishna pd Acharya 
+SUPERVISOR 
+ 
+ 
+ 
+
+--- Page 3 ---
+ 
+ 
+iii 
+ 
+ 
+ 
+ 
+Tribhuvan University 
+Faculty of Humanities and Social Sciences 
+Mechi Multiple Campus 
+ 
+ 
+LETTER OF APPROVAL 
+ 
+This is to certify that this project prepared by ADITYA UPRETY & RUPAN 
+CHAPAGAIN entitled “ BUS TICKETING SYSTEM ” in partial fulfilment of the 
+requirements for the degree of Bachelor in Computer Application has been evaluated. In 
+my opinion it is satisfactory in the scope and quality as a project for the required degree. 
+ 
+ 
+ 
+ 
+ 
+SIGNATURE of Supervisor 
+Krishna pd Acharya (Teaching Assistant) 
+ 
+ 
+ 
+SIGNATURE OF HOD/ Coordinator 
+Raju poudel 
+ 
+ 
+ 
+SIGNATURE of Internal Examiner 
+ 
+ 
+ 
+SIGNATURE of External Examiner 
+
+--- Page 4 ---
+ 
+ 
+i 
+ 
+Acknowledgement 
+On this great occasion of accomplishment of my project, I would like to express my sincere 
+thanks to my Supervisor Krishna pd Acharya  for his valuable guidance and support in 
+completing my project.  
+ 
+I would like to express my gratitude towards our Program Deputy Director Mr. Raju Poudel 
+and Project Co-ordinator Mr. Krishna pd Acharya for giving me this great opportunity to 
+do a project on “ BUS TICKETING SYSTEM”. Without their support and suggestions, 
+this project would not have been completed. Their valuable guidance and suggestions 
+helped me in various phases of the completion of this project. I will be thankful to you in 
+this regard.  
+ 
+I am ensuring that this project was finished by me and not copied.  
+ 
+ 
+Yours sincerely 
+Aditya Uprety 
+Rupan Chapagain 
+  
+--- Page 5 ---
+ 
+ 
+ii 
+ 
+ 
+Abstract 
+Bus Ticketing System is an application that runs in a centralized network. Bus Ticketing 
+System should be used is to facilitate people to book tickets of their desired bus just by 
+sitting at their home without having to go to ticket counters and standing in a queue. This 
+system also helps to secure required tickets quickly before all available quotas runs out. 
+This application maintains all customer details, ticket details and booking details in a 
+systematic manner. The customers of the application will be able to login, view, book and 
+cancel their tickets. The admin will be able to create and update ticket deta ils and view 
+users. 
+The customers can book the desired ticket easily and instantly. Once the booking process 
+is complete, they will be given an invoice that contains ticket number and other details. 
+This system will help the ticket counters to go online for better business with better services 
+and well managed ticket booking system, data integrity, data security, quick operations and 
+create paperless environment. 
+ 
+  
+--- Page 6 ---
+ 
+ 
+iii 
+ 
+Table of Contents 
+1. Introduction ...................................................................................................................... 1 
+1.1. Introduction ............................................................................................................... 1 
+1.2. Problem Statement .................................................................................................... 2 
+1.3. Objectives .................................................................................................................. 2 
+1.4. Scope and Limitation ................................................................................................ 2 
+1.5. Development Methodology ....................................................................................... 3 
+1.6. Report Organization .................................................................................................. 3 
+2. Background Study and Literature Review ....................................................................... 5 
+2.1 Background Study ...................................................................................................... 5 
+2.2. Literature Review ...................................................................................................... 5 
+3. System Analysis and Design ............................................................................................ 7 
+3.1 System Analysis ......................................................................................................... 7 
+3.1.1 Requirement Analysis.......................................................................................... 7 
+3.1.2. Feasibility Analysis ............................................................................................ 8 
+3.1.3. Data Modelling (ER Diagram) ......................................................................... 10 
+3.1.4. Process Modelling (DFD) ................................................................................. 11 
+3.2. System Design ......................................................................................................... 13 
+3.2.1. Architectural Design ......................................................................................... 13 
+3.2.2. Database Schema Design .................................................................................. 13 
+3.2.3. Interface Design ................................................................................................ 14 
+3.2.4 Physical DFD ..................................................................................................... 15 
+3.3 Algorithm details ...................................................................................................... 15 
+4. Implementation and Testing .......................................................................................... 17 
+4.1 Implementation......................................................................................................... 17 
+4.1.1 Tools Used ......................................................................................................... 17 
+4.1.2. Implementation Details of Modules ................................................................. 17 
+4.2. Testing ..................................................................................................................... 17 
+4.2.1. Test Cases for Unit Testing .............................................................................. 17 
+4.2.2. Test Cases for System Testing .......................................................................... 18 
+5. Conclusion and Future Recommendations .................................................................... 20 
+5.1. Lesson Learnt / Outcome ........................................................................................ 20 
+5.2. Conclusion ............................................................................................................... 20 
+--- Page 7 ---
+ 
+ 
+iv 
+ 
+5.3. Future Recommendations ........................................................................................ 20 
+6. Appendices ................................................................................................................. 21 
+6.1. Screenshots .............................................................................................................. 21 
+6.2. Source Codes ........................................................................................................... 24 
+7. References and Bibliography ......................................................................................... 31 
+ 
+ 
+ 
+ 
+  
+  
+--- Page 8 ---
+ 
+ 
+v 
+ 
+List Of Figures 
+Figure 1: Use Case Diagram of BTS ................................................................................... 7 
+Figure 2: Gantt Chart of BTS............................................................................................. 10 
+Figure 3: ER Diagram of BTS ........................................................................................... 10 
+Figure 4: Context Diagram of BTS .................................................................................... 11 
+Figure 5: System Flowchart of BTS .................................................................................. 12 
+Figure 6: Architectural Design of BTS .............................................................................. 13 
+Figure 7: No-SQL Database Design of BTS...................................................................... 13 
+Figure 8: Interface Design of BTS ..................................................................................... 14 
+Figure 9: Level 1 DFD of BTS .......................................................................................... 15 
+  
+--- Page 9 ---
+ 
+ 
+vi 
+ 
+List Of Tables 
+Table 1:  Abbreviations ...................................................................................................... vii 
+Table 2: Test Case for Login ............................................................................................. 17 
+Table 3: Test Case for Signup ............................................................................................ 18 
+Table 4: Test Case for Creating New Ticket ..................................................................... 18 
+Table 5: Test Case for Booking New Ticket ..................................................................... 18 
+Table 6: Test Case for System Testing .............................................................................. 19 
+ 
+  
+--- Page 10 ---
+ 
+ 
+vii 
+ 
+List of Abbreviations 
+The following table shows various abbreviations and acronyms used throughout the 
+report. 
+Table 1:  Abbreviations
+BTS Bus Ticketing System 
+DFD Data Flow Diagram 
+ER Entity Relationship 
+RTDB Realtime Database 
+--- Page 11 ---
+ 
+ 
+1 
+ 
+1. Introduction 
+1.1. Introduction 
+The modern world is a busy world. People are busy in their own works. And when the time 
+comes to travel a new place for business works or recreation it might be very time 
+consuming to buy tickets by standing in a very long queue. Sometimes the available tickets 
+may run out. In order to minimize this problem, Bus Ticketing System (BTS) was 
+introduced. 
+In general words, Online Ticket (Digital Ticket) is a form of ticket that is present in a digital 
+form unlike in paper form as physical ticket. Both physical and digital ticket work same, 
+but has some great advantages like physical tickets might get damage d and lost but e -
+Tickets don’t and you don’t need to carry additional things in digital ticketing system. Bus 
+Ticketing is a system that aims to convert the physical ticketing system into digital ticketing 
+system. 
+BTS is a platform that provide services for travel ticket booking through which people can 
+book tickets of  buses easily from anywhere just by using their smartphone or computer. In 
+today’s time, almost everyone has access to internet, own a device that ca n access the 
+internet and online banking services to perform banking transactions via internet. 
+This project is going to facilitate people to use the internet and online banking facilities and 
+book their desired ticket with their smartphones or laptops. They don’t need to appear 
+physically and stand in a long queue to get any tickets. In addition to ticket booking, this 
+service will allow people to book cheapest and best tickets by comparing among the 
+available tickets. 
+The goal of building this project is to bring the physical ticket booking centres online and 
+make ticket booking accessible from everywhere. This will save their time that they used 
+to spend to sell tickets to their customers one by one and also can increa se sales and 
+revenue.  
+--- Page 12 ---
+ 
+ 
+2 
+ 
+1.2. Problem Statement 
+When anyone need to travel from one place to another place for business works or for 
+recreational activities, they need to manage lot of things like travelling tickets, hotel rooms, 
+etc. In the traditional ticket booking system, a person should visit each and every counter 
+and check whether any ticket is available or not. They may need to stand in a long queue 
+for buying tickets which is a boring and time -consuming process. Sometimes all tickets 
+could be booked and they need to search tickets by visiting ti cket counters one by one to 
+find tickets. This can be a boring and time -consuming problem. In order to solve this 
+problem, BTS was developed. 
+1.3. Objectives 
+The main objectives of this project are listed below. 
+1. To save time by booking ticket online. 
+ 
+1.4. Scope and Limitation 
+The Bus Ticketing System ( BTS) will allow users to sign up and check as well as book 
+their required tickets. 
+1. BTS maintains users’ information and ticket information in a systematic manner. 
+2. The main user of the app is Admin who is responsible to add and update existing 
+tickets. 
+3. It allows users to check and book their preferred tickets. 
+4. System generates an invoice with ticket number after booking is successful. 
+ 
+The limitations of BTS are as follows: 
+1. Requires good internet connectivity and a device capable of browsing internet. 
+ 
+  
+--- Page 13 ---
+ 
+ 
+3 
+ 
+1.5. Development Methodology 
+The requirement of the system is very well documented, clear and fixed. The tools and 
+technologies that is used in the system development is well understood and it is not 
+dynamic. There are plenty of resources and guides are available with required expertise to 
+support the development of the system . So, it will be feasible to use Waterfall Model for 
+building the system. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig: Waterfall Methodology Workflow 
+ 
+1.6. Report Organization 
+The report is organized as follows: 
+Chapter 1: Introduction of the project along with the problem statement, objectives, scope 
+and limitation. 
+ 
+Chapter 2: Background study related to the project along with general descriptions of 
+project functions and components. Literature review in order to have broader understanding 
+of the project concepts based on research done previously and analyse similar systems for 
+comparison with projects. 
+ 
+
+--- Page 14 ---
+ 
+ 
+4 
+ 
+Chapter 3: System Analysis and design of the system using various charts and  figures. 
+Functional requirements using use cases and other techniques. Database schema, interface 
+design and deployment diagram. 
+ 
+Chapter 4: Tools and techniques used for project implementation along with algorithms 
+used in the project and creations of test cases to test the system as unit and as a whole. 
+ 
+Chapter 5: Lesson learnt from start to finishing the project, future recommendations for 
+other projects and project conclusions. 
+ 
+Chapter 6: Appendices to show screenshBTS and source codes of different functions and 
+pages. 
+ 
+Chapter 7: Reference to the source from where some content is taken and used in this 
+report. 
+  
+--- Page 15 ---
+ 
+ 
+5 
+ 
+2. Background Study and Literature Review 
+2.1 Background Study 
+When anyone need to travel from one place to another place for business works or for 
+recreational activities, they need to manage lot of things like travelling tickets, hotel rooms, 
+etc. In the traditional ticket booking system, a person should visit each and every counter 
+and check whether any ticket is available or not. They may need to stand in a long queue 
+for buying tickets which is a boring and time -consuming process. Sometimes all tickets 
+could be booked and they need to search tickets by visiting ti cket counters one by one to 
+find tickets. This can be a boring and time-consuming problem. 
+ 
+There were many problems and drawbacks in the manual system including: 
+1. Time consuming. 
+2. Less efficient. 
+ 
+2.2. Literature Review 
+An online booking system is a software solution that allows potential guests to self -book 
+and pay through your website, and other channels, while giving you the best tools to run 
+and scale your operation, all in one place.  A booking system can help you do way more 
+than just passively accept bookings and payments online. Reservation technology (res-tech) 
+has evolved to the point that it’s become a central hub for managing every aspect of your 
+business, from marketing to distribution to operations [1]. 
+ 
+An e-ticket is a digital ticket that is as valid as a paper ticket, i.e., it is the equivalent. It is 
+an electronic ticket which gives the holder the right to travel or attend an event. Although 
+we associate the term ‘e -ticket’ with flight tickets that air lines issue, it could mean any 
+ticket we buy online. Specifically, any ticket we buy for which there is no issuing of a paper 
+ticket. 
+An e-ticket that an airline issue is a reservation in its computer system. It tells them that 
+they have confirmed somebody’s seat on a specific flight. [2] 
+ 
+Online booking systems are the easiest way of bringing together travellers and property 
+owners. Integrate advanced technology with your conventional customer service and your 
+property now has a competitive advantage! Online booking system are not only usef ul for 
+--- Page 16 ---
+ 
+ 
+6 
+ 
+fulfilling operations with ease but can also double as a medium for improved sales. Using 
+of an Online Reservation System ensures that your customers can find you with ease. If 
+you are wondering how, here we have compiled a list of benefits you should have  
+considered before. 
+ 
+It is quite clear that an awful lot of time is taken up handling phone calls from people 
+looking to book a room. A large portion of the conversation involves explaining options 
+and managing schedules. Moreover, the demand requires that a member of the staf f to be 
+constantly available. You might not consider this a problem with customer service staff on 
+hand, but consider the man hours which could be released by moving to an online booking 
+platform. 
+ 
+If you keep up with the trends in hospitality and travel, you already know customers no 
+longer discover your business via a phone book. Neither do they find information about 
+your products and services, if you send them a directory. People are progressively learning 
+everything they need to know about your product using mobile applications and browsing 
+online. [3] 
+ 
+  
+--- Page 17 ---
+ 
+ 
+7 
+ 
+3. System Analysis and Design 
+3.1 System Analysis  
+3.1.1 Requirement Analysis  
+The requirements of the system are determined as given below. 
+i. Functional Requirements 
+ 
+Figure 1: Use Case Diagram of BTS 
+ 
+• Sign In: Users can sign in to the system and get access to their privileges in the 
+system. 
+• Sign Out: Users can sign out from the system. 
+• Sign Up: Users can create new account in the system with user-only privileges. 
+• Add Tickets: Admin can create new ticket items. 
+• Update Tickets: Admin can update existing tickets. 
+
+--- Page 18 ---
+ 
+ 
+8 
+ 
+• Delete Tickets: Admin can delete expired tickets. 
+• View Users: Admin can view list users and their details. 
+• Book Tickets: Users can book the tickets of their choice. 
+• Cancel Tickets: Users can cancel the booked tickets. 
+• Update Profile: Users can update information in their profile. 
+• Change Password: Users can change their login password. 
+• Reset Password: Admin can reset user’s password in case they forget it. 
+ 
+ii. Non-Functional Requirements 
+Non-functional requirements (NFRs) define system attributes such as security, reliability, 
+performance, maintainability, scalability, and usability  [1]. The non -functional 
+requirements of Bus Ticketing System (BTS) are: 
+• Reliability of the System: The system is easy to use and doesn’t have high system 
+requirements. So, the system is reliable. 
+• Maintainability of the System: The system runs with less hardware requirements 
+and in case of any technical errors, the system can be maintained in less budget. 
+• Security of the System: The system will be secure and the user’s information won’t 
+be available for others for user’s privacy concern. 
+• Usability of the System: People having basic knowledge of computers can easily. 
+The User Interface is kept easy and simple so that users don’t feel confused with it. 
+• Availability of the System: The system will be available online for everyone. 
+ 
+ 
+3.1.2. Feasibility Analysis 
+This project will be developed in Windows 10 Operating System using VSCode as code 
+editor and Google Chrome for viewing and debugging the project. React, NodeJS and 
+Firebase will be used for Frontend, Backend and Database respectively. Therefore, 
+considering the feasibility of the software  in the above environment,  the development of 
+system can be successfully carried out. 
+ 
+ 
+ 
+ 
+--- Page 19 ---
+ 
+ 
+9 
+ 
+Technical Feasibility 
+The following tools are used in the development of the system are: 
+Each of the component used are free and easily available which goes to show that the 
+suggested system is technically possible. 
+ 
+Operational Feasibility 
+To establish system's operational feasibility, we must analyse several Criteria: 
+SN Criteria Outcomes 
+1 UI Incredibly User-Friendly 
+2 Deployment Expenses  Acceptable 
+3 User Training Simple or Not-required 
+The project team estimated that the remaining and running system after the deployment 
+would not be a major difficulty, indicating that the project is operationally feasible. 
+ 
+ 
+Economic Feasibility 
+To determine if a project is economically feasible, we must analyse several criteria: 
+SN Criteria Outcomes 
+1 Cost Very Minimal 
+2 Maintenance expenses Extremely low 
+3 Developer Payment No Payment 
+The above-mentioned criteria impose no additional economic overheads, making the 
+system economically feasible. 
+SN 
+Tools Availability 
+1 
+ReactJS Free 
+2 
+NodeJS Free 
+3 
+Firebase Free 
+4 
+Microsoft Edge Free 
+--- Page 20 ---
+ 
+ 
+10 
+ 
+Schedule Analysis 
+The tentative time schedule to accomplish this project along with task are as shown in 
+below figure: 
+ 
+Figure 2: Gantt Chart of BTS 
+ 
+3.1.3. Data Modelling (ER Diagram) 
+ 
+Figure 3: ER Diagram of BTS 
+ 
+
+--- Page 21 ---
+ 
+ 
+11 
+ 
+3.1.4. Process Modelling (DFD) 
+ 
+Figure 4: Context Diagram of BTS 
+ 
+  
+
+--- Page 22 ---
+ 
+ 
+12 
+ 
+ 
+Figure 5: System Flowchart of BTS 
+ 
+  
+
+--- Page 23 ---
+ 
+ 
+13 
+ 
+3.2. System Design 
+3.2.1. Architectural Design 
+ 
+Figure 6: Architectural Design of BTS 
+ 
+3.2.2. Database Schema Design 
+ 
+Figure 7: No-SQL Database Schema of BTS 
+  
+
+--- Page 24 ---
+ 
+ 
+14 
+ 
+3.2.3. Interface Design 
+ 
+Figure 8: Interface Design of BTS 
+  
+
+--- Page 25 ---
+ 
+ 
+15 
+ 
+3.2.4 Physical DFD 
+ 
+Figure 9: Level 1 DFD of BTS 
+3.3 Algorithm details 
+The following is the main algorithm used in this Bus Ticketing Project 
+Filtering Algorithm 
+A filtering algorithm based on a simple linear search method works by sequentially 
+checking each element of a list or array against a specified condition or criteria. If the 
+element satisfies the condition, it is included in the result set; otherwise, it is ignored. Here's 
+how it works: 
+A linear search is an algorithm that checks each element of a list, one by one, until it finds 
+the elements that match a specified condition. In your case, the condition is determined by 
+the user's selected filter criteria for "From," "To," and "Time." 
+Iterate through Each Ticket: The algorithm goes through each ticket in the dataset, 
+examining them one by one. 
+Check Each Condition: For each ticket, it checks whether the ticket's "From," "To," and 
+"Time" values match the user's selected criteria. Specifically, it evaluates: 
+
+--- Page 26 ---
+ 
+ 
+16 
+ 
+From Location: It checks if the ticket's "from" location matches the user’s selected 
+"From" filter. 
+To Location: It checks if the ticket's "to" location matches the user’s selected "To" 
+filter. 
+Time: It checks if the ticket's time matches the user’s selected time filter. 
+Include or Exclude: If the ticket meets all the conditions (or if a condition is not specified 
+by the user), the ticket is included in the filtered list. If not, it is excluded. 
+Result: After going through all the tickets, the filtered list of tickets is updated. 
+ 
+  
+--- Page 27 ---
+ 
+ 
+17 
+ 
+4. Implementation and Testing 
+4.1 Implementation  
+4.1.1 Tools Used 
+The following language and tools will be used for project development. 
+Frontend and UI: ReactJS 
+Backend: NodeJS 
+Database: Firebase Realtime Database 
+Code Editor: Visual Studio Code 
+Browser: Microsoft Edge 
+Others: Postman (for testing API) 
+ 
+4.1.2. Implementation Details of Modules 
+• User Module: In this module, users can login, view list of tickets and book 
+tickets. 
+• Admin Module: In this module, admins can create new tickets, update existing 
+ones and delete the expired ones. 
+ 
+4.2. Testing 
+4.2.1. Test Cases for Unit Testing 
+SN Input User Data Expected Output Actual Output Result 
+1 rupanchapagain 
+12345 
+Login with access to 
+admin dashboard. 
+Logged in and got 
+access admin 
+dashboard. 
+Pass 
+2 sammy 
+12345 
+Show alert showing 
+user is not registered. 
+Alert shown with 
+message of user not 
+registered 
+Pass 
+3 markz 
+2345 
+Login but no access to 
+admin dashboard. 
+Logged in and take to 
+user dashboard only. 
+Pass 
+ 
+Table 2: Test Case for Login 
+ 
+ 
+--- Page 28 ---
+ 
+ 
+18 
+ 
+SN Input User Data Expected Output Actual Output Result 
+1 rupanchapagain 
+12345 
+User already 
+registered. 
+User already 
+registered. 
+Pass 
+2 ram 
+12345 
+Username must be 
+between 5 to 20 chars. 
+Username must be 
+between 5 to 20 chars. 
+Pass 
+3 adityaupreti 
+12345 
+Signup successful. Signup successful. Pass 
+Table 3: Test Case for Signup 
+ 
+SN Input User Data Expected Output Actual Output Result 
+1 Name: Hari Travels 
+Category: bus 
+Price: 1000 
+Destination: KTM-
+PKH 
+Image: hari.jpg 
+Ticket Created 
+Successfully 
+Ticket Created 
+Successfully 
+Pass 
+Table 4: Test Case for Creating New Ticket 
+ 
+SN Input User Data Expected Output Actual Output Result 
+1 Name: Hari Travels 
+Available: 20 
+Qty: 1 
+Booking successful. Successful booking 
+and generates invoice. 
+Pass 
+Table 5: Test Case for Booking New Ticket 
+ 
+4.2.2. Test Cases for System Testing 
+SN Input User Data Expected Output Actual Output Result 
+1 Enter URL Open application 
+homepage. 
+Application homepage 
+opened. 
+Pass 
+--- Page 29 ---
+ 
+ 
+19 
+ 
+2 rupanchapagain 
+Rupan@123 
+Login with admin 
+privileges. 
+Logged in and got 
+access to admin 
+privileges. 
+Pass 
+2 adityaupreti 
+Aditya@123 
+Login with as user. Logged in and but got 
+no access to admin 
+dashboard. 
+Pass 
+3 Add Tickets Create new ticket New ticket was 
+created. 
+Pass 
+4 Update Tickets Update details of 
+existing tickets. 
+The price and details 
+of ticket is updated. 
+Pass 
+5 Update Profile Update details and 
+password of logged in 
+user. 
+The details and 
+password of logged in 
+user is updated. 
+Pass 
+6 Book Ticket Book the chosen ticket. The ticket is booked 
+successfully. 
+Pass 
+7 Cancel Ticket Cancel the booking of 
+already booked ticket. 
+Booking removed 
+from user profile and 
+updated in ticket 
+details as well. 
+Pass 
+Table 6: Test Case for System Testing 
+  
+--- Page 30 ---
+ 
+ 
+20 
+ 
+5. Conclusion and Future Recommendations 
+5.1. Lesson Learnt / Outcome 
+The primary objective of this project was to create a working system that interacts with the 
+database to create new content in the database,  display content from database and allow 
+editing or deleting existing content. The most important lesson learnt was management of 
+time according to complexity of the system components i.e., know which components to 
+prioritize. A software developer must always research in their daily coding life, so it is 
+important to research things in an efficient way. A software developer must choose the right 
+and easy option. 
+ 
+5.2. Conclusion 
+It has been a matter of immense pleasure, honor and challenge to have this opportunity to 
+take up this project and complete it successfully. This project is designed to meet the  
+requirements to provide platform for ticket counters to make their customers to be able to 
+book tickets online.  Application has been developed to meet the above -mentioned 
+requirements using JavaScript i.e., ReactJS in the frontend, NodeJS in the backend and 
+Firebase RTDB as database. 
+The entire project development process taught us the following skills: 
+• Using system analysis and design techniques like interface diagrams in designing 
+the system. 
+• Understanding the database handling. 
+• Analyse a problem from the user’s point of view and how to make it user-friendly 
+by hiding its complications behind the application. 
+• Understanding the criteria for making application that is more demanding. 
+ 
+5.3. Future Recommendations 
+The success of this project will depend on the number of people who will take advantage  
+of the system. Future developments will be done according to the feedbacks and reviews  
+obtained from the users who book their favorite tickets using this system. Database will be 
+upgraded and refined frequently. Online Payment with Credit Card / Debit Card etc. could 
+also be integrated into the system in order to enhance user friendliness and interaction. 
+  
+--- Page 31 ---
+ 
+ 
+21 
+ 
+6. Appendices 
+6.1. Screenshots 
+ 
+Figure 10: Login Page 
+ 
+ 
+ 
+Figure 11: Credential Validation during Login 
+
+--- Page 32 ---
+ 
+ 
+22 
+ 
+ 
+Figure 12: Signup Page 
+ 
+ 
+ 
+Figure 13: User viewing available tickets 
+
+--- Page 33 ---
+ 
+ 
+23 
+ 
+ 
+   
+Figure 14: User viewing Lists of Booked Tickets 
+ 
+ 
+ 
+ 
+ 
+Figure 15: Admin page for creating new tickets 
+
+--- Page 34 ---
+ 
+ 
+24 
+ 
+ 
+ 
+Figure 16: Admin page to view all tickets and update them 
+ 
+ 
+ 
+Figure 17: Admin viewing lists of registered users 
+6.2. Source Codes 
+Login Verification (Client Side) 
+const verifyTokenAndGetCredentials = (username, secret) =&gt; { 
+const url = `http://localhost:3500/VerifyLogin`; 
+const data = { 
+username: username, 
+secret: secret 
+}; 
+const postConfig = { 
+headers: { 
+&quot;content-type&quot;: &quot;application/json&quot;, 
+
+--- Page 35 ---
+ 
+ 
+25 
+ 
+&quot;accept&quot;: &quot;application/json&quot; 
+} 
+} 
+axios.post(url, data, postConfig) 
+.then(res =&gt; { 
+ 
+34 
+ 
+setLoginButton(&quot;Login&quot;); 
+if(res.data.status === &quot;success&quot;) { 
+localStorage.setItem(&quot;token&quot;, res.data.token); 
+localStorage.setItem(&quot;username&quot;, res.data.username); 
+localStorage.setItem(&quot;fullname&quot;, res.data.fullname); 
+window.location.href = &quot;/&quot;; 
+} 
+if(res.data.status === &quot;unauthorized&quot;) { 
+Swal.fire(&quot;Login Failed&quot;, &quot;Incorrect password!&quot;, 
+&quot;warning&quot;); 
+} 
+if(res.data.status === &quot;failed&quot;) { 
+Swal.fire(&quot;Login Failed&quot;, &quot;Entered  username is not registered!&quot;, 
+&quot;error&quot;); 
+} 
+}); 
+}; 
+ 
+const checkLoginCredentials = () =&gt; { 
+// regex to verify username contains only letters, numbers and underscores 
+const usernameRegex = /^[a-zA-z0-9_]*$/gi; 
+// change the content of button to show operation is in progress 
+setLoginButton(&quot;Logging In...&quot;); 
+ 
+// hash the password using sha-256 algorithm 
+sha256(password).then(hash =&gt; { 
+--- Page 36 ---
+ 
+ 
+26 
+ 
+verifyTokenAndGetCredentials(username, hash); 
+}); 
+} 
+ 
+Login Verification (Server Side) 
+app.post(&quot;/VerifyLogin&quot;, (req, res) =&gt; { 
+const username = req.body.username; 
+const secret = req.body.secret; 
+ 
+database.ref(`/users/credentials/${username}`).once(&quot;value&quot;, snapshot =&gt; 
+{ 
+ 
+35 
+ 
+if(!snapshot.exists()) { 
+res.json({ 
+status: &quot;failed&quot;, 
+message: &quot;Username Not Registered&quot; 
+}); 
+} else { 
+let userData = snapshot.val(); 
+if(userData.secret === secret) { 
+let token = Math.random().toString(36).substring(2, 15) + 
+Math.random().toString(36).substring(2, 15); 
+database.ref(`/users/credentials/${username}/token`).set(token) 
+.then(() =&gt; { 
+res.json({ 
+status: &quot;success&quot;, 
+username: username, 
+fullname: userData.fullname, 
+token: token 
+}); 
+}); 
+} else { 
+--- Page 37 ---
+ 
+ 
+27 
+ 
+res.json({ 
+status: &quot;unauthorized&quot;, 
+message: &quot;Incorrect Password&quot; 
+}); 
+} 
+} 
+}); 
+}); 
+ 
+Updating Ticket (Server Side) 
+app.post(&quot;/UpdateTicket&quot;, (req, res) =&gt; { 
+const id = req.body.id; 
+ 
+36 
+ 
+const name = req.body.name; 
+const price = req.body.price; 
+const quantity = req.body.quantity; 
+const category = req.body.category; 
+const destination = req.body.destination; 
+const imageName = req.body.imageName; 
+const imageSize = req.body.imageSize; 
+const imageBase64 = req.body.imageBase64; 
+ 
+const ticketData = { 
+name: name, 
+price: price, 
+quantity: quantity, 
+category: category, 
+destination: destination, 
+imageName: imageName, 
+imageSize: imageSize, 
+imageBase64: imageBase64, 
+}; 
+--- Page 38 ---
+ 
+ 
+28 
+ 
+ 
+database.ref(`/tickets/${category}/${id}`).update(ticketData) 
+.then(() =&gt; { 
+res.json({ 
+status: &quot;success&quot; 
+}); 
+}) 
+.catch(error =&gt; { 
+res.send({ 
+status: &quot;error&quot; 
+}); 
+}); 
+}); 
+ 
+37 
+ 
+Deleting Ticket (Server Side) 
+app.post(&quot;/DeleteTicket&quot;, (req, res) =&gt; { 
+const id = req.body.id; 
+const category = req.body.category; 
+ 
+database.ref(`/tickets/${category}/${id}`).set(null) 
+.then(() =&gt; { 
+res.json({ 
+status: &quot;success&quot; 
+}); 
+}) 
+.catch(error =&gt; { 
+res.send({ 
+status: &quot;error&quot; 
+}); 
+}); 
+}); 
+ 
+--- Page 39 ---
+ 
+ 
+29 
+ 
+Update Ticket (Server Side) 
+app.post(&quot;/UpdateTicket&quot;, (req, res) =&gt; { 
+const id = req.body.id; 
+const name = req.body.name; 
+const price = req.body.price; 
+const quantity = req.body.quantity; 
+const category = req.body.category; 
+const destination = req.body.destination; 
+const imageName = req.body.imageName; 
+const imageSize = req.body.imageSize; 
+const imageBase64 = req.body.imageBase64; 
+ 
+const ticketData = { 
+name: name, 
+ 
+38 
+ 
+price: price, 
+quantity: quantity, 
+category: category, 
+destination: destination, 
+imageName: imageName, 
+imageSize: imageSize, 
+imageBase64: imageBase64, 
+}; 
+ 
+database.ref(`/tickets/${category}/${id}`).update(ticketData) 
+.then(() =&gt; { 
+res.json({ 
+status: &quot;success&quot; 
+}); 
+}) 
+.catch(error =&gt; { 
+res.send({ 
+--- Page 40 ---
+ 
+ 
+30 
+ 
+status: &quot;error&quot; 
+}); 
+}); 
+});  
+--- Page 41 ---
+ 
+ 
+31 
+ 
+ 
+7. References and Bibliography 
+[1]  Checkfront, “What Exactly Is an Online Booking System?,” Checkfront, 1 10 2020. 
+[Online]. Available: https://www.checkfront.com/blog/what-is-an-online-booking-
+system/. [Accessed 28 06 2022]. 
+[2]  MBN, “What is an e-ticket?,” MBN, [Online]. Available: 
+https://marketbusinessnews.com/financial-glossary/e-ticket/. [Accessed 26 06 2022]. 
+[3]  H. Logix, “5 Advantages of Using Online Booking Systems For Your Property,” 
+Hotel Logix, 11 08 2021. [Online]. Available: 
+https://www.hotelogix.com/blog/2021/08/11/advantages-using-online-booking-
+system-property/. [Accessed 28 06 2022]. 
+[4]  S. Agile, “Scaled Agile Framework,” 25 6 2022. [Online]. Available: 
+https://www.scaledagileframework.com. 
+ 
