@@ -1,4 +1,4 @@
-import { Product } from "../api/ProductApi";
+import type { Product } from "../api/ProductApi";
 
 interface ProductWithScore {
   product: Product;

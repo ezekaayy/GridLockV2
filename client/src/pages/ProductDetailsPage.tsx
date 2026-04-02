@@ -275,7 +275,7 @@ export const ProductDetailsPage = () => {
                 Included Files ({product.files.length})
               </p>
               <div className="space-y-2">
-                {product.files.map((file, index) => (
+                {product.files.map((_file, index) => (
                   <div key={index} className="flex items-center gap-2 text-xs font-mono text-gray-600">
                     <Package size={14} />
                     <span>File {index + 1}</span>
