@@ -1,5 +1,4 @@
 import { v2 as cloudinary } from "cloudinary";
-import { CloudinaryStorage } from "multer-storage-cloudinary";
 import multer from "multer";
 import "dotenv/config";
 
@@ -17,24 +16,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// storage for cover images
-export const coverStorage = new CloudinaryStorage({
-  cloudinary,
-  params: {
-    folder: "gridlock/covers",
-    allowed_formats: ["jpg", "jpeg", "gif", "webp"],
-  } as any,
-});
-
-// Storage for product files (zip)
-export const filesStorage = new CloudinaryStorage({
-  cloudinary,
-  params: {
-    folder: "gridlock/files",
-    resource_type: "raw",
-    allowed_formats: ["zip", "rar"],
-  } as any,
-});
+//store files in memory/buffer
+const storage = multer.memoryStorage();
 
 // image filter
 const imageFilter = (
@@ -53,39 +36,85 @@ const imageFilter = (
 
 // file filter
 
+// const fileFilter = (
+//   req: Express.Request,
+//   file: Express.Multer.File,
+//   cb: multer.FileFilterCallback,
+// ) => {
+//   const allowedTypes = /zip|rar|7z|tar|gz|x-7z-compressed|x-rar-compressed/;
+//   const mimeType = allowedTypes.test(file.mimetype);
+//   if (mimeType) {
+//     cb(null, true);
+//   } else {
+//     cb(new Error("Only archive files (zip, rar, 7z, tar, gz) are allowed"));
+//   }
+// };
+
+
 const fileFilter = (
   req: Express.Request,
   file: Express.Multer.File,
   cb: multer.FileFilterCallback,
 ) => {
-  const allowedTypes = /zip|rar|7z|tar|gz|x-7z-compressed|x-rar-compressed/;
-  const mimeType = allowedTypes.test(file.mimetype);
-  if (mimeType) {
-    cb(null, true);
+  if (file.fieldname === "coverImage") {
+    // Allow images for cover image field
+    const allowedImageTypes = /jpeg|jpg|png|gif|webp/;
+    const mimeType = allowedImageTypes.test(file.mimetype);
+    if (mimeType) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only image files are allowed for cover image"));
+    }
+  } else if (file.fieldname === "files") {
+    // Allow archives for product files field
+    const allowedArchiveTypes = /zip|rar|7z|tar|gz|x-7z-compressed|x-rar-compressed/;
+    const mimeType = allowedArchiveTypes.test(file.mimetype);
+    if (mimeType) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only archive files (zip, rar, 7z, tar, gz) are allowed"));
+    }
   } else {
-    cb(new Error("Only archive files (zip, rar, 7z, tar, gz) are allowed"));
+    cb(new Error("Unexpected field name"));
   }
 };
 
+// upload to cloudinary
+// Upload to Cloudinary from buffer
+export const uploadToCloudinary = (
+  file: Express.Multer.File,
+  folder: string,
+  resourceType: "image" | "raw" = "image"
+): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      { folder, resource_type: resourceType },
+      (error, result) => {
+        if (error) return reject(error);
+        resolve(result!.secure_url);
+      }
+    );
+    stream.end(file.buffer);
+  });
+};
+
 export const uploadProductFiles = multer({
-  storage: filesStorage,
-  limits: {fileSize: 50 * 1024 * 1024},
-  fileFilter: fileFilter
-})
-
-
+  storage,
+  limits: { fileSize: 50 * 1024 * 1024 },
+  fileFilter,
+});
 export const uploadCover = multer({
-  storage: coverStorage,
-  limits: {fileSize: 5 * 1024 * 1024},
-  fileFilter: imageFilter
-})
-
-
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 },
+  fileFilter: imageFilter,
+});
 export const uploadFiles = multer({
-  storage: filesStorage,
-  limits: {fileSize: 50 * 1024 * 1024},
-  fileFilter: fileFilter
-})
-
+  storage,
+  limits: { fileSize: 50 * 1024 * 1024 },
+  fileFilter,
+});
 
 export default cloudinary;
+
+
+

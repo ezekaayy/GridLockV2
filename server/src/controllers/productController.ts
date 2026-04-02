@@ -7,6 +7,7 @@ import { getErrorMessage } from "../utils/errors";
 import { SendError, sendSuccess } from "../utils/responseHelper";
 import { CATEGORIES, type Category } from "../models/Products";
 import { getRelatedProducts } from "../utils/recommendation";
+import { uploadToCloudinary } from "../utils/cloudinary";
 
 interface ProductQuery {
     page?: string;
@@ -152,12 +153,12 @@ export const addProduct = async (req: Request, res: Response) => {
     console.log("Uploaded files:", uploadedFiles);
     if (uploadedFiles.coverImage && uploadedFiles.coverImage[0]) {
       // coverImage = `/uploads/covers/${uploadedFiles.coverImage[0].filename}`;
-      coverImage = uploadedFiles.coverImage[0].path; //cloudinary URL
+      coverImage = await uploadToCloudinary(uploadedFiles.coverImage[0], "gridlock/covers", "image")
       console.log("Cover image path saved:", coverImage);
     }
     if (uploadedFiles.files && uploadedFiles.files.length > 0) {
       // files = uploadedFiles.files.map((f) => `/uploads/files/${f.filename}`);
-      files = uploadedFiles.files.map((f) => f.path)
+      files = await Promise.all(uploadedFiles.files.map((f) => uploadToCloudinary(f, "gridlock/files", "raw")))
       console.log("Product files paths saved:", files);
     }
   } else {
@@ -211,11 +212,14 @@ export const updateProduct = async (req: Request, res: Response) => {
     const uploadedFiles = req.files as { [fieldname: string]: Express.Multer.File[] };
     if (uploadedFiles.coverImage && uploadedFiles.coverImage[0]) {
       // coverImage = `/uploads/covers/${uploadedFiles.coverImage[0].filename}`;
-      coverImage = uploadedFiles.coverImage[0].path;
+      coverImage = await uploadToCloudinary(uploadedFiles.coverImage[0], "gridlock/covers", "image");
     }
     if (uploadedFiles.files && uploadedFiles.files.length > 0) {
       // files = [...files, ...uploadedFiles.files.map((f) => `/uploads/files/${f.filename}`)];
-      files = [...files, ...uploadedFiles.files.map((f) => f.path)];
+      const newFiles = await Promise.all(
+      uploadedFiles.files.map((f) => uploadToCloudinary(f, "gridlock/files", "raw"))
+    );
+    files = [...files, ...newFiles];
     }
   }
 
