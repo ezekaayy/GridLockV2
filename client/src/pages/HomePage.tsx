@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getProducts, CATEGORIES, type Product } from "../api/ProductApi";
 import { ProductCard } from "../components/ProductCard";
 import { Button } from "../components/Button";
-import { ArrowRight, Zap, Shield, Truck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const HomePage = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
@@ -28,59 +28,79 @@ export const HomePage = () => {
 
   return (
     <div>
-      <section className="bg-black text-white py-20 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="font-display font-bold text-5xl md:text-7xl uppercase tracking-tight">
-            Grid<span className="text-primary">lock</span>
-          </h1>
-          <p className="font-mono text-lg md:text-xl mt-4 text-gray-300 max-w-2xl mx-auto">
-            Discover amazing digital products from creators worldwide.
-            Templates, e-books, software, and more.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Link to="/products">
-              <Button variant="primary" size="lg" className="flex items-center gap-2">
-                Browse Products
-                <ArrowRight size={18} />
-              </Button>
-            </Link>
-            <Link to="/signup">
-              <Button variant="white" size="lg">
-                Start Selling
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section */}
+      <section className="relative bg-black text-white overflow-hidden">
+        {/* Diagonal accent block */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-6 translate-x-32 origin-top-right hidden md:block" />
 
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6 border-2 border-black bg-white shadow-brutal">
-              <Zap size={40} className="mx-auto text-primary" />
-              <h3 className="font-display font-bold text-xl uppercase mt-4">Instant Download</h3>
-              <p className="font-mono text-sm text-gray-600 mt-2">
-                Get your products immediately after purchase
-              </p>
+        {/* Geometric blocks */}
+        <div className="absolute top-12 right-12 w-24 h-24 border-[3px] border-primary/20 rotate-12 hidden lg:block" />
+        <div className="absolute bottom-24 right-24 w-40 h-40 border-[3px] border-primary/10 -rotate-6 hidden lg:block" />
+        <div className="absolute top-1/3 right-[15%] w-16 h-16 bg-primary/10 hidden lg:block" />
+
+        {/* Content */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-20 pb-24 md:pt-28 md:pb-32 lg:pt-36 lg:pb-40">
+          <div className="max-w-5xl">
+            {/* Tag */}
+            <div className="inline-block border-[3px] border-primary text-primary font-mono text-xs sm:text-sm uppercase tracking-[0.25em] px-4 py-2 mb-8">
+              Digital Marketplace for Creators
             </div>
-            <div className="text-center p-6 border-2 border-black bg-white shadow-brutal">
-              <Shield size={40} className="mx-auto text-primary" />
-              <h3 className="font-display font-bold text-xl uppercase mt-4">Secure Payments</h3>
-              <p className="font-mono text-sm text-gray-600 mt-2">
-                Safe and secure checkout process
-              </p>
-            </div>
-            <div className="text-center p-6 border-2 border-black bg-white shadow-brutal">
-              <Truck size={40} className="mx-auto text-primary" />
-              <h3 className="font-display font-bold text-xl uppercase mt-4">Easy Delivery</h3>
-              <p className="font-mono text-sm text-gray-600 mt-2">
-                Digital delivery straight to your account
-              </p>
+
+            {/* Headline — massive neobrutalism type */}
+            <h1 className="font-display font-bold text-[clamp(3.5rem,10vw,9rem)] uppercase leading-[0.82] tracking-tighter">
+              Sell<span className="text-primary">.</span><br />
+              Create<span className="text-primary">.</span><br />
+              Earn<span className="text-primary">.</span>
+            </h1>
+
+            {/* Description */}
+            <p className="font-mono text-sm sm:text-base md:text-lg mt-8 text-gray-400 max-w-lg leading-relaxed">
+              The marketplace built for independent creators.
+              Sell templates, e-books, software, digital art &amp; more.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 mt-10">
+              <Link to="/products">
+                <Button variant="primary" size="xl" className="flex items-center gap-2">
+                  Browse Products
+                  <ArrowRight size={20} />
+                </Button>
+              </Link>
+              <Link to="/signup">
+                <Button variant="white" size="xl">
+                  Start Selling
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
+
+        {/* Marquee strip */}
+        <div className="relative border-y-[3px] border-white/10 overflow-hidden">
+          <div className="flex animate-marquee">
+            {[...Array(2)].map((_, set) => (
+              <div key={set} className="flex items-center whitespace-nowrap py-4 gap-8">
+                {["TEMPLATES", "E-BOOKS", "SOFTWARE", "DIGITAL ART", "3D MODELS", "VIDEOS", "MUSIC", "GRAPHICS"].map(
+                  (item) => (
+                    <span key={`${set}-${item}`} className="flex items-center gap-8">
+                      <span className="font-display font-bold text-lg md:text-xl uppercase tracking-wider text-white/30">
+                        {item}
+                      </span>
+                      <span className="w-2 h-2 bg-primary" />
+                    </span>
+                  ),
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom accent bar */}
+        <div className="h-2 bg-primary" />
       </section>
 
+      {/* Featured Products */}
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-8">
@@ -103,7 +123,7 @@ export const HomePage = () => {
           {isLoading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="border-2 border-black bg-gray-100 animate-pulse h-80"></div>
+                <div key={i} className="border-2 border-black bg-gray-100 animate-pulse h-80" />
               ))}
             </div>
           ) : featuredProducts.length > 0 ? (
@@ -120,6 +140,7 @@ export const HomePage = () => {
         </div>
       </section>
 
+      {/* Browse by Category */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-display font-bold text-3xl uppercase tracking-tight text-center mb-8">
@@ -141,6 +162,7 @@ export const HomePage = () => {
         </div>
       </section>
 
+      {/* CTA Section */}
       <section className="py-20 px-4 bg-black text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display font-bold text-4xl uppercase tracking-tight">

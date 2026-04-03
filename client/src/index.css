@@ -11,6 +11,13 @@
   --shadow-brutal: 8px 8px 0px 0px #000000;
   --shadow-brutal-hover: 8px 8px 0px 0px var(--color-primary);
   --shadow-brutal-sm: 4px 4px 0px 0px #000000;
+
+  --animate-marquee: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 /* Your custom patterns from the HTML */

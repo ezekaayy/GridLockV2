@@ -41,7 +41,7 @@ app.use(
 );
 
 // CORS setup
-const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [];
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || ["http://localhost:5173"];
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -51,13 +51,13 @@ app.use(
       // In development, allow all origins
       if (isDevelopment) return callback(null, true);
 
-      // In production, check allowed list
+      // In production or if isDevelopment check fails unexpectedly, check allowed list
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
 
       console.log(`CORS blocked origin: ${origin}`);
-      return callback(new Error("Not allowed by CORS"), false);
+      return callback(null, false);
     },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],

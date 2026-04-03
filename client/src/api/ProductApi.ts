@@ -10,10 +10,10 @@ export const CATEGORIES = [
   "graphics",
   "3d-models",
   "photography",
-  "other"
+  "other",
 ] as const;
 
-export type Category = typeof CATEGORIES[number];
+export type Category = (typeof CATEGORIES)[number];
 
 export interface Product {
   _id: string;
@@ -87,31 +87,37 @@ export interface ProductFilters {
 }
 
 export const getProducts = async (
-  filters?: ProductFilters
+  filters?: ProductFilters,
 ): Promise<ApiResponse<ProductsResponse>> => {
   const params = new URLSearchParams();
-  
+
   if (filters) {
     if (filters.page) params.append("page", filters.page.toString());
     if (filters.limit) params.append("limit", filters.limit.toString());
     if (filters.search) params.append("search", filters.search);
     if (filters.category) params.append("category", filters.category);
-    if (filters.minPrice) params.append("minPrice", filters.minPrice.toString());
-    if (filters.maxPrice) params.append("maxPrice", filters.maxPrice.toString());
+    if (filters.minPrice)
+      params.append("minPrice", filters.minPrice.toString());
+    if (filters.maxPrice)
+      params.append("maxPrice", filters.maxPrice.toString());
     if (filters.sortBy) params.append("sortBy", filters.sortBy);
     if (filters.sortOrder) params.append("sortOrder", filters.sortOrder);
   }
 
   const queryString = params.toString();
-  const url = queryString ? `/product/get-products?${queryString}` : "/product/get-products";
-  
+  const url = queryString
+    ? `/product/get-products?${queryString}`
+    : "/product/get-products";
+
   const response = await apiClient.get<ApiResponse<ProductsResponse>>(url);
   return response.data;
 };
 
-export const getProductById = async (id: string): Promise<ApiResponse<Product>> => {
+export const getProductById = async (
+  id: string,
+): Promise<ApiResponse<Product>> => {
   const response = await apiClient.get<ApiResponse<Product>>(
-    `/product/get-product/${id}`
+    `/product/get-product/${id}`,
   );
   return response.data;
 };
@@ -140,18 +146,19 @@ export const createProduct = async (
     formData.append("coverImage", data.coverImage);
   }
   if (data.files) {
-    data.files.forEach(file => {
+    data.files.forEach((file) => {
       formData.append("files", file);
-    })
+    });
   }
 
   const response = await apiClient.post<ApiResponse<Product>>(
     "/product/add-product",
-    formData,{
-      headers: {
-        "Content-Type" : "multipart/form-data"
-      }
-    }
+    formData,
+    // {
+    //   headers: {
+    //     "Content-Type": "multipart/form-data",
+    //   },
+    // },
   );
   return response.data;
 };
@@ -161,14 +168,14 @@ export const updateProduct = async (
   data: updateProductData,
 ): Promise<ApiResponse<Product>> => {
   const formData = new FormData();
-  
+
   if (data.name) formData.append("name", data.name);
   if (data.description) formData.append("description", data.description);
   if (data.price !== undefined) formData.append("price", data.price.toString());
   if (data.category) formData.append("category", data.category);
   if (data.coverImage) formData.append("coverImage", data.coverImage);
   if (data.files) {
-    data.files.forEach(file => {
+    data.files.forEach((file) => {
       formData.append("files", file);
     });
   }
@@ -182,11 +189,11 @@ export const updateProduct = async (
   const response = await apiClient.patch<ApiResponse<Product>>(
     `product/update-product/${id}`,
     formData,
-    {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      }
-    }
+    // {
+    //   headers: {
+    //     "Content-Type": "multipart/form-data"
+    //   }
+    // }
   );
   return response.data;
 };
@@ -202,10 +209,10 @@ export const deleteProduct = async (
 
 export const getRelatedProducts = async (
   id: string,
-  limit: number = 4
+  limit: number = 4,
 ): Promise<ApiResponse<Product[]>> => {
   const response = await apiClient.get<ApiResponse<Product[]>>(
-    `/product/related/${id}?limit=${limit}`
+    `/product/related/${id}?limit=${limit}`,
   );
   return response.data;
 };
