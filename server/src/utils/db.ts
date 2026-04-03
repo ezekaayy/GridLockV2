@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+// db connect
 export const connectDb: () => Promise<void> = async () => {
     try {
         if (!process.env.MONGO_URI) {
